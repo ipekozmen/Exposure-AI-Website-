@@ -19,13 +19,10 @@ Boş vaktinin büyük kısmını profesyonel olarak eskrim yaparak, keman ve piy
 Bu kişisel web sitesini HTML, CSS ve JavaScript kullanarak kendisi hazırladı; web geliştirmenin temellerini bu proje üzerinden öğreniyor.
 
 # Öğrenmek İstediğim Şeyler
-(Doldurulacak — örn. hangi programlama dilleri, hangi konular öğrenmek istiyor?)
+Ekonomi ve borsa konularını öğrenmek istiyor. Yabancı dil olarak İspanyolca ve İtalyanca öğrenmeyi düşünüyor; Fransızca da ilgisini çekiyor ama onu daha zor buluyor.
 
 # Gelecek Hedeflerim
-(Doldurulacak — kısa ve uzun vadeli hedefler)
-
-# Sevdiğim Kitaplar, Oyunlar veya Filmler
-(Doldurulacak — isteğe bağlı)
+Kısa vadede bir orkestraya girmek, kemanda kendini geliştirmek ve eskrimde milli takıma seçilmek istiyor. Uzun vadeli hedefi ise Amerika'da üniversite okumak.
 
 # İletişim ve Sosyal Medya
 - Instagram: @ipekk.ozmen
