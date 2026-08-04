@@ -26,10 +26,9 @@ ${profile}
 --- PROFİL BİLGİSİ SONU ---`;
 }
 
-// Format doğrulandı: akademinin endpoint'i OpenAI-uyumlu chat completions
-// şeklinde çalışıyor (Authorization: Bearer + {model, messages} gövdesi,
-// hata gövdesi {error:{code,message,type}}). Tek eksik: doğru model ID'si —
-// BEDROCK_MODEL_ID ortam değişkeninden okunuyor, akademiden öğrenince .env'e ekle.
+// Akademinin Bedrock endpoint'i OpenAI-uyumlu chat completions formatında
+// çalışıyor: Authorization: Bearer + {model, messages} gövdesi, cevap
+// choices[0].message.content içinde geliyor. Model ID: google.gemma-4-31b
 async function callBedrockAPI(systemPrompt, history, message) {
   const apiUrl = process.env.BEDROCK_API_URL;
   const apiKey = process.env.BEDROCK_API_KEY;
@@ -69,13 +68,7 @@ async function callBedrockAPI(systemPrompt, history, message) {
 
   const data = await response.json();
 
-  // Olası birkaç farklı cevap şeklini dene (gerçek format doğrulanınca sadeleştir)
-  const reply =
-    data?.choices?.[0]?.message?.content ??
-    data?.completion ??
-    data?.output?.[0]?.content?.[0]?.text ??
-    data?.output_text ??
-    data?.text;
+  const reply = data?.choices?.[0]?.message?.content;
 
   if (!reply) {
     throw new Error('Bedrock API cevabı beklenmeyen formatta: ' + JSON.stringify(data));
