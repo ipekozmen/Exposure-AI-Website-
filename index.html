@@ -125,6 +125,34 @@
   <p>© 2026 İpek Özmen · Bu site kendi ellerimle (ve Claude Code ile) yapıldı.</p>
 </footer>
 
+<button id="chatbotToggle" class="chatbot-toggle" aria-label="Sohbeti aç" aria-expanded="false">
+  <span class="chatbot-toggle-icon">💬</span>
+</button>
+
+<div id="chatbotPanel" class="chatbot-panel" hidden>
+  <div class="chatbot-header">
+    <span class="chatbot-title">İpek'in Asistanı</span>
+    <button id="chatbotClose" class="chatbot-close" aria-label="Sohbeti kapat">✕</button>
+  </div>
+
+  <div id="chatbotMessages" class="chatbot-messages">
+    <div class="chatbot-message chatbot-message-bot">
+      Merhaba! Ben İpek'i tanıtan kişisel asistanım. Onun projeleri, ilgi alanları, başarıları ve hedefleri hakkında bana soru sorabilirsin.
+    </div>
+    <div id="chatbotSuggestions" class="chatbot-suggestions">
+      <button class="chatbot-suggestion" data-question="En büyük başarısı nedir?">En büyük başarısı nedir?</button>
+      <button class="chatbot-suggestion" data-question="Hangi projeler üzerinde çalıştı?">Hangi projeler üzerinde çalıştı?</button>
+      <button class="chatbot-suggestion" data-question="Gelecek hedefleri nelerdir?">Gelecek hedefleri nelerdir?</button>
+    </div>
+  </div>
+
+  <form id="chatbotForm" class="chatbot-input-row">
+    <input id="chatbotInput" class="chatbot-input" type="text" placeholder="Bir şey sor..." autocomplete="off" />
+    <button type="submit" id="chatbotSend" class="chatbot-send" aria-label="Gönder">➤</button>
+  </form>
+</div>
+
 <script src="script.js"></script>
+<script src="chatbot.js"></script>
 </body>
 </html>
