@@ -36,6 +36,16 @@ function addMessage(text, role) {
   return el;
 }
 
+function addLoadingIndicator() {
+  const el = document.createElement('div');
+  el.className = 'chatbot-message chatbot-message-loading';
+  el.setAttribute('aria-label', 'Cevap hazırlanıyor');
+  el.innerHTML = '<span class="chatbot-dot"></span><span class="chatbot-dot"></span><span class="chatbot-dot"></span>';
+  messagesEl.appendChild(el);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+  return el;
+}
+
 function setLoading(loading) {
   isLoading = loading;
   sendBtn.disabled = loading;
@@ -53,7 +63,7 @@ async function sendMessage(text) {
   history.push({ role: 'user', content: text });
 
   setLoading(true);
-  const loadingEl = addMessage('Cevap hazırlanıyor...', 'loading');
+  const loadingEl = addLoadingIndicator();
 
   try {
     const response = await fetch('/api/chat', {
