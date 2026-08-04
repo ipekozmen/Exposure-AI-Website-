@@ -24,6 +24,9 @@ Ekonomi ve borsa konularını öğrenmek istiyor. Yabancı dil olarak İspanyolc
 # Gelecek Hedeflerim
 Kısa vadede bir orkestraya girmek, kemanda kendini geliştirmek ve eskrimde milli takıma seçilmek istiyor. Uzun vadeli hedefi ise Amerika'da üniversite okumak.
 
+# Sevdiğim Kitaplar, Diziler veya Filmler
+En sevdiği dizi Friends.
+
 # İletişim ve Sosyal Medya
 - Instagram: @ipekk.ozmen
 - GitHub: @ipekozmen
