@@ -26,17 +26,20 @@ ${profile}
 --- PROFİL BİLGİSİ SONU ---`;
 }
 
-// ⚠️ DOĞRULANMADI: Akademinin Bedrock API'sinin tam istek/cevap formatı henüz
-// bilinmiyor. Aşağıdaki fonksiyon en yaygın "OpenAI-uyumlu chat completions"
-// şeklini varsayıyor (Authorization: Bearer + {model, messages} gövdesi).
-// Akademiden gerçek örneği aldığında SADECE bu fonksiyonu güncellemen yeterli
-// — geri kalan kod (profil okuma, sistem talimatı, frontend) değişmeden kalır.
+// Format doğrulandı: akademinin endpoint'i OpenAI-uyumlu chat completions
+// şeklinde çalışıyor (Authorization: Bearer + {model, messages} gövdesi,
+// hata gövdesi {error:{code,message,type}}). Tek eksik: doğru model ID'si —
+// BEDROCK_MODEL_ID ortam değişkeninden okunuyor, akademiden öğrenince .env'e ekle.
 async function callBedrockAPI(systemPrompt, history, message) {
   const apiUrl = process.env.BEDROCK_API_URL;
   const apiKey = process.env.BEDROCK_API_KEY;
+  const modelId = process.env.BEDROCK_MODEL_ID;
 
   if (!apiUrl || !apiKey) {
     throw new Error('BEDROCK_API_URL veya BEDROCK_API_KEY tanımlı değil (Vercel environment variables kontrol et)');
+  }
+  if (!modelId) {
+    throw new Error('BEDROCK_MODEL_ID tanımlı değil — akademiden doğru Gemma model ID\'sini öğrenip .env dosyasına eklemen gerekiyor');
   }
 
   const messages = [
@@ -52,7 +55,7 @@ async function callBedrockAPI(systemPrompt, history, message) {
       Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      model: 'gemma-4-31b',
+      model: modelId,
       messages,
       max_tokens: 512,
       temperature: 0.4,
