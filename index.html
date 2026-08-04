@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>İpek Özmen</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<nav class="navbar">
+  <a href="#hero" class="nav-logo">İÖ</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Menüyü aç">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#hero">Ana Sayfa</a></li>
+    <li><a href="#hakkimda">Hakkımda</a></li>
+    <li><a href="#basarilar">Başarılar</a></li>
+    <li><a href="#baglantilar">Bağlantılar</a></li>
+    <li><a href="#iletisim">İletişim</a></li>
+  </ul>
+</nav>
+
+<section id="hero" class="hero">
+  <div class="hero-content">
+    <div class="avatar" aria-hidden="true">
+      <div class="avatar-badge badge-1">🤺</div>
+      <div class="avatar-badge badge-2">🎻</div>
+      <div class="avatar-badge badge-3">🎹</div>
+    </div>
+    <h1>İpek Özmen</h1>
+    <p class="tagline">Robert Kolej'de 9. sınıfa geçecek olan bir lise öğrencisiyim.</p>
+    <p class="subtagline">Eskrim, keman ve piyano arasında geçen günlerime kodlamayı da katıyorum.</p>
+    <div class="hero-buttons">
+      <a href="#basarilar" class="btn btn-primary">Başarılarım</a>
+      <a href="#iletisim" class="btn btn-outline">İletişime Geç</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Kaydır</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<section id="hakkimda" class="section">
+  <h2 class="section-title">Hakkımda</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>Merhaba! Ben İpek, Robert Kolej'de 9. sınıfa geçiyorum. Boş vakitlerimin büyük kısmını profesyonel olarak eskrim yaparak, keman ve piyano çalarak geçiriyorum. Disiplin ve pratik gerektiren bu üç alan bana odaklanmayı ve sabırla çalışmayı öğretti.</p>
+      <p>Şu sıralar bu siteyi hazırlarken web geliştirmenin temellerini öğreniyorum — HTML, CSS ve JavaScript ile kendimi ifade etmenin yeni bir yolunu keşfediyorum.</p>
+    </div>
+    <div class="interests">
+      <h3>İlgi Alanlarım</h3>
+      <div class="tags">
+        <span class="tag tag-turquoise">🤺 Eskrim</span>
+        <span class="tag tag-yellow">🎻 Keman</span>
+        <span class="tag tag-pink">🎹 Piyano</span>
+        <span class="tag tag-turquoise">💻 Web Geliştirme</span>
+      </div>
+      <h3>Şu An Öğrendiklerim</h3>
+      <div class="tags">
+        <span class="tag tag-outline">HTML / CSS / JS</span>
+        <span class="tag tag-outline">Kod ile tasarım</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="basarilar" class="section section-alt">
+  <h2 class="section-title">Başarılar</h2>
+  <div class="achievements-grid">
+    <div class="achievement-card">
+      <div class="achievement-icon">🤺</div>
+      <h3>Eskrim</h3>
+      <p>Klasmanda dereceli bir eskrimciyim. Çok sayıda derecem ve madalyam var.</p>
+    </div>
+    <div class="achievement-card">
+      <div class="achievement-icon">🎻</div>
+      <h3>Müzik — LCM Sertifikaları</h3>
+      <p>Keman ve piyanoda LCM (London College of Music) sınavlarından sertifikalarım var.</p>
+    </div>
+    <div class="achievement-card">
+      <div class="achievement-icon">🎓</div>
+      <h3>Ortaokul İkinciliği</h3>
+      <p>Ortaokul eğitimimi okul ikincisi olarak tamamladım.</p>
+    </div>
+  </div>
+</section>
+
+<section id="baglantilar" class="section">
+  <h2 class="section-title">Bağlantılar</h2>
+  <p class="section-subtitle">Beni bu platformlarda da bulabilirsin.</p>
+  <div class="links-grid">
+    <a href="https://instagram.com/ipekk.ozmen" target="_blank" rel="noopener noreferrer" class="link-card">
+      <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <rect x="3" y="3" width="18" height="18" rx="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+      </svg>
+      <span>Instagram</span>
+      <span class="link-handle">@ipekk.ozmen</span>
+    </a>
+    <a href="https://github.com/ipekozmen" target="_blank" rel="noopener noreferrer" class="link-card">
+      <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.1 2.8 5 3.1 5 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 3.6 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/>
+      </svg>
+      <span>GitHub</span>
+      <span class="link-handle">@ipekozmen</span>
+    </a>
+  </div>
+</section>
+
+<section id="iletisim" class="section section-alt">
+  <h2 class="section-title">İletişim</h2>
+  <p class="section-subtitle">Bir mesaj göndermek istersen, buradan ulaşabilirsin.</p>
+  <a href="mailto:ipekk.ozmennn@gmail.com" class="btn btn-primary btn-large">
+    ✉️ ipekk.ozmennn@gmail.com
+  </a>
+</section>
+
+<footer class="footer">
+  <p>© 2026 İpek Özmen · Bu site kendi ellerimle (ve Claude Code ile) yapıldı.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
