@@ -581,7 +581,9 @@ ul { list-style: none; }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
   flex-shrink: 0;
 }
 
@@ -803,5 +805,70 @@ ul { list-style: none; }
   .chatbot-message,
   .chatbot-dot {
     animation: none;
+  }
+}
+
+/* Chatbot — imleç efektleri */
+
+/* Panel içinde fareyi takip eden ışık huzmesi */
+.chatbot-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: radial-gradient(
+    200px circle at var(--chat-mx, 50%) var(--chat-my, 50%),
+    rgba(255, 223, 140, 0.30) 0%,
+    rgba(240, 184, 198, 0.20) 38%,
+    rgba(53, 184, 174, 0.10) 58%,
+    transparent 72%
+  );
+}
+
+.chatbot-panel.is-hovered::after {
+  opacity: 1;
+}
+
+/* Sitenin imleç parlaması chatbot üzerindeyken küçülüp pembeleşir */
+.cursor-glow {
+  transition: opacity 0.3s ease, width 0.35s ease, height 0.35s ease, background 0.35s ease;
+}
+
+.cursor-glow.over-chat {
+  width: 170px;
+  height: 170px;
+  background: radial-gradient(circle at center,
+    rgba(240, 184, 198, 0.60) 0%,
+    rgba(255, 223, 140, 0.42) 45%,
+    rgba(168, 230, 225, 0.20) 68%,
+    transparent 76%);
+}
+
+/* Butonun etrafında nefes alan halka */
+.chatbot-toggle::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid rgba(240, 184, 198, 0.6);
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.3s ease, transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+}
+
+.chatbot-toggle:hover::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chatbot-panel::after,
+  .cursor-glow,
+  .chatbot-toggle::after {
+    transition: none;
   }
 }

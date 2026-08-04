@@ -7,7 +7,7 @@ const form = document.getElementById('chatbotForm');
 const input = document.getElementById('chatbotInput');
 const sendBtn = document.getElementById('chatbotSend');
 
-let history = [];
+let chatHistory = [];
 let isLoading = false;
 
 function openPanel() {
@@ -26,6 +26,26 @@ toggleBtn.addEventListener('click', () => {
 });
 
 closeBtn.addEventListener('click', closePanel);
+
+// İmleç efektleri: panel içinde fareyi takip eden ışık + sitenin
+// parlamasının chatbot üzerindeyken renk/boyut değiştirmesi
+const cursorGlowEl = document.getElementById('cursorGlow');
+
+panel.addEventListener('pointermove', (e) => {
+  const rect = panel.getBoundingClientRect();
+  panel.style.setProperty('--chat-mx', `${e.clientX - rect.left}px`);
+  panel.style.setProperty('--chat-my', `${e.clientY - rect.top}px`);
+});
+
+function setChatHover(on) {
+  panel.classList.toggle('is-hovered', on);
+  if (cursorGlowEl) cursorGlowEl.classList.toggle('over-chat', on);
+}
+
+panel.addEventListener('pointerenter', () => setChatHover(true));
+panel.addEventListener('pointerleave', () => setChatHover(false));
+toggleBtn.addEventListener('pointerenter', () => setChatHover(true));
+toggleBtn.addEventListener('pointerleave', () => setChatHover(false));
 
 function addMessage(text, role) {
   const el = document.createElement('div');
@@ -60,7 +80,7 @@ async function sendMessage(text) {
   }
 
   addMessage(text, 'user');
-  history.push({ role: 'user', content: text });
+  chatHistory.push({ role: 'user', content: text });
 
   setLoading(true);
   const loadingEl = addLoadingIndicator();
@@ -69,20 +89,22 @@ async function sendMessage(text) {
     const response = await fetch('/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: text, history }),
+      body: JSON.stringify({ message: text, history: chatHistory }),
     });
 
     if (!response.ok) {
-      throw new Error('İstek başarısız');
+      throw new Error(`Sunucu ${response.status} döndü`);
     }
 
     const data = await response.json();
     loadingEl.remove();
     addMessage(data.reply, 'bot');
-    history.push({ role: 'assistant', content: data.reply });
+    chatHistory.push({ role: 'assistant', content: data.reply });
   } catch (err) {
     loadingEl.remove();
     addMessage('Şu anda cevap oluşturulamıyor. Lütfen birkaç saniye sonra tekrar dene.', 'error');
+    // Teşhis için: tarayıcı konsolunda gerçek sebebi göster
+    console.error('Chatbot isteği başarısız:', err);
   } finally {
     setLoading(false);
     input.focus();
